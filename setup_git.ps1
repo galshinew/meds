@@ -3,7 +3,7 @@ git config --global user.name "galshinew"
 git config --global user.email "galshinew@gmail.com"
 
 # Create directory if it doesn't exist
-$statusPath = "C:\Users\galsh\AppData\Roaming\pills"
+$statusPath = "C:\Users\galsh\AppData\Roaming\pills\status.html"
 New-Item -ItemType Directory -Force -Path $statusPath
 
 # Create empty status.html file
@@ -24,4 +24,4 @@ git add .
 git commit -m "Initial setup with status.html"
 
 # Push to GitHub
-git push -u origin main
+git push -u origin master 
