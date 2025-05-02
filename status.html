@@ -5,53 +5,232 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>מעקב תרופות - 02/05/2025</title>
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 20px;
-            background-color: #f0f0f0;
-            direction: rtl;
+        :root {
+            --primary-color: #2196F3;
+            --success-color: #4CAF50;
+            --warning-color: #FFC107;
+            --danger-color: #F44336;
+            --background-color: #F5F5F5;
         }
-        .status {
+        
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-color);
+            direction: rtl;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .status-card {
             background: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
             margin-bottom: 20px;
+            transition: transform 0.2s;
         }
+
+        .status-card:hover {
+            transform: translateY(-2px);
+        }
+
         .time {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .taken {
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        .missed {
+            color: var(--danger-color);
+            font-weight: bold;
+        }
+
+        .status-icon {
+            font-size: 1.5em;
+            margin-left: 5px;
+        }
+
+        .progress-container {
+            background-color: #eee;
+            border-radius: 10px;
+            margin: 10px 0;
+            height: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.5s ease-in-out;
+            text-align: center;
+            color: white;
+            font-size: 0.9em;
+            line-height: 20px;
+        }
+
+        .weekly-summary {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            margin: 30px 0;
+        }
+
+        .summary-title {
             font-size: 1.2em;
             font-weight: bold;
-            margin-bottom: 10px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
         }
-        .taken {
-            color: green;
+
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
         }
-        .missed {
-            color: red;
+
+        .history-table th, .history-table td {
+            padding: 12px;
+            text-align: right;
+            border-bottom: 1px solid #ddd;
         }
+
+        .history-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .history-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
         .current-time {
             text-align: center;
             font-size: 0.9em;
             color: #666;
-            margin-top: 20px;
+            margin-top: 30px;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            .time {
+                font-size: 1.2em;
+            }
         }
     </style>
 </head>
 <body>
-    <div class='status'>
-        <div class='time'>תרופת בוקר:</div>
-        <div class='taken'>
-            ✔️ נלקחה
+    <div class='container'>
+        <div class='header'>
+            <h1>מעקב תרופות יומי</h1>
+            <h2>יום שישי, 02/05/2025</h2>
         </div>
-    </div>
-    <div class='status'>
-        <div class='time'>תרופת ערב:</div>
-        <div class='missed'>
-            ❌ לא נלקחה
+
+        <div class='status-card'>
+            <div class='time'>תרופת בוקר</div>
+            <div class='taken'>
+                <span class='status-icon'>✔️</span>
+                נלקחה
+            </div>
         </div>
-    </div>
-    <div class='current-time'>
-        עודכן לאחרונה: 14:32 02/05/2025
+
+        <div class='status-card'>
+            <div class='time'>תרופת ערב</div>
+            <div class='taken'>
+                <span class='status-icon'>✔️</span>
+                נלקחה
+            </div>
+        </div>
+
+        <div class='weekly-summary'>
+            <div class='summary-title'>סיכום שבועי</div>
+            <div>תרופת בוקר</div>
+            <div class='progress-container'>
+                <div class='progress-bar' style='width: 14.285714285714285%; background-color: var(--primary-color);'>
+                    14%
+                </div>
+            </div>
+            <div style='margin-top: 15px;'>תרופת ערב</div>
+            <div class='progress-container'>
+                <div class='progress-bar' style='width: 14.285714285714285%; background-color: var(--primary-color);'>
+                    14%
+                </div>
+            </div>
+            
+            <table class='history-table'>
+                <tr>
+                    <th>תאריך</th>
+                    <th>בוקר</th>
+                    <th>ערב</th>
+                </tr>
+                <tr>
+                    <td>02/05/2025 (יום שישי)</td>
+                    <td class='taken'>✔️</td>
+                    <td class='taken'>✔️</td>
+                </tr>
+                <tr>
+                    <td>01/05/2025 (יום חמישי)</td>
+                    <td class='missed'>❌</td>
+                    <td class='missed'>❌</td>
+                </tr>
+                <tr>
+                    <td>30/04/2025 (יום רביעי)</td>
+                    <td class='missed'>❌</td>
+                    <td class='missed'>❌</td>
+                </tr>
+                <tr>
+                    <td>29/04/2025 (יום שלישי)</td>
+                    <td class='missed'>❌</td>
+                    <td class='missed'>❌</td>
+                </tr>
+                <tr>
+                    <td>28/04/2025 (יום שני)</td>
+                    <td class='missed'>❌</td>
+                    <td class='missed'>❌</td>
+                </tr>
+                <tr>
+                    <td>27/04/2025 (יום ראשון)</td>
+                    <td class='missed'>❌</td>
+                    <td class='missed'>❌</td>
+                </tr>
+                <tr>
+                    <td>26/04/2025 (יום שבת)</td>
+                    <td class='missed'>❌</td>
+                    <td class='missed'>❌</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class='current-time'>
+            עודכן לאחרונה: 14:37 02/05/2025
+        </div>
     </div>
     <script>
         setTimeout(function() { 
