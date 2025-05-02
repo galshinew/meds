@@ -1,1 +1,62 @@
-<!DOCTYPE html><html><body><h1>Status Page</h1></body></html>
+﻿<!DOCTYPE html>
+<html dir='rtl'>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>מעקב תרופות - 02/05/2025</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px;
+            background-color: #f0f0f0;
+            direction: rtl;
+        }
+        .status {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .time {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .taken {
+            color: green;
+        }
+        .missed {
+            color: red;
+        }
+        .current-time {
+            text-align: center;
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class='status'>
+        <div class='time'>תרופת בוקר:</div>
+        <div class='missed'>
+            ❌ לא נלקחה
+        </div>
+    </div>
+    <div class='status'>
+        <div class='time'>תרופת ערב:</div>
+        <div class='taken'>
+            ✔️ נלקחה
+        </div>
+    </div>
+    <div class='current-time'>
+        עודכן לאחרונה: 14:14 02/05/2025
+    </div>
+    <script>
+        setTimeout(function() { 
+            window.location.reload(); 
+        }, 60000);
+    </script>
+</body>
+</html>
