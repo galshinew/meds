@@ -230,13 +230,6 @@
             margin-top: 5px;
         }
 
-        .next-weekly {
-            font-size: 0.8em;
-            color: var(--primary-color);
-            margin-top: 5px;
-            font-weight: 500;
-        }
-
         @media (max-width: 600px) {
             body {
                 padding: 10px;
@@ -279,9 +272,9 @@
 
             <div class='status-card'>
                 <div class='time'>תרופת ערב</div>
-                <div class='missed'>
-                    <span class='status-icon'>❌</span>
-                    לא נלקחה
+                <div class='taken'>
+                    <span class='status-icon'>✔️</span>
+                    נלקחה
                 </div>
             </div>
 
@@ -291,7 +284,6 @@
                     <span class='status-icon'>✔️</span>
                     נלקחה
                     <div class='weekly-date'>נלקחה לאחרונה: 04/05/2025</div>
-                    <div class='next-weekly'>הבא: 11/05/2025</div>
                 </div>
             </div>
         </div>
@@ -306,8 +298,8 @@
             </div>
             <div style='margin-top: 15px;'>תרופת ערב</div>
             <div class='progress-container'>
-                <div class='progress-bar' style='width: 85.71428571428571%; background-color: var(--primary-color);'>
-                    86%
+                <div class='progress-bar' style='width: 100%; background-color: var(--primary-color);'>
+                    100%
                 </div>
             </div>
             <div style='margin-top: 15px;'>תרופה שבועית</div>
@@ -327,7 +319,7 @@
                 <tr>
                     <td>10/05/2025 (יום שבת)</td>
                     <td class='taken'>✔️</td>
-                    <td class='missed'>❌</td>
+                    <td class='taken'>✔️</td>
                     <td class='neutral'>⚪</td>
                 </tr>
                 <tr>
