@@ -15,6 +15,7 @@
             --weekly-color: #FFC0CB;
             --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             --hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            --neutral-color: #9E9E9E;
         }
         
         * {
@@ -106,6 +107,15 @@
 
         .missed {
             color: var(--danger-color);
+            font-weight: bold;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .neutral {
+            color: var(--neutral-color);
             font-weight: bold;
             font-size: 1.2em;
             display: flex;
@@ -263,9 +273,9 @@
 
             <div class='status-card'>
                 <div class='time'>תרופה שבועית</div>
-                <div class='missed'>
-                    <span class='status-icon'>❌</span>
-                    לא נלקחה
+                <div class='neutral'>
+                    <span class='status-icon'>⚪</span>
+                    לא רלוונטי
                 </div>
             </div>
         </div>
@@ -302,37 +312,37 @@
                     <td>10/05/2025 (יום שבת)</td>
                     <td class='taken'>✔️</td>
                     <td class='taken'>✔️</td>
-                    <td class='missed'>❌</td>
+                    <td class='neutral'>⚪</td>
                 </tr>
                 <tr>
                     <td>09/05/2025 (יום שישי)</td>
                     <td class='taken'>✔️</td>
                     <td class='taken'>✔️</td>
-                    <td class='missed'>❌</td>
+                    <td class='neutral'>⚪</td>
                 </tr>
                 <tr>
                     <td>08/05/2025 (יום חמישי)</td>
                     <td class='taken'>✔️</td>
                     <td class='taken'>✔️</td>
-                    <td class='missed'>❌</td>
+                    <td class='neutral'>⚪</td>
                 </tr>
                 <tr>
                     <td>07/05/2025 (יום רביעי)</td>
                     <td class='taken'>✔️</td>
                     <td class='taken'>✔️</td>
-                    <td class='missed'>❌</td>
+                    <td class='neutral'>⚪</td>
                 </tr>
                 <tr>
                     <td>06/05/2025 (יום שלישי)</td>
                     <td class='taken'>✔️</td>
                     <td class='taken'>✔️</td>
-                    <td class='missed'>❌</td>
+                    <td class='neutral'>⚪</td>
                 </tr>
                 <tr>
                     <td>05/05/2025 (יום שני)</td>
                     <td class='taken'>✔️</td>
                     <td class='taken'>✔️</td>
-                    <td class='missed'>❌</td>
+                    <td class='neutral'>⚪</td>
                 </tr>
                 <tr>
                     <td>04/05/2025 (יום ראשון)</td>
@@ -344,7 +354,7 @@
         </div>
 
         <div class='current-time'>
-            עודכן לאחרונה: 21:08 10/05/2025
+            עודכן לאחרונה: 21:11 10/05/2025
         </div>
     </div>
     <script>
