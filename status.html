@@ -117,6 +117,8 @@
             border-radius: 15px;
             box-shadow: var(--card-shadow);
             margin-top: 30px;
+            width: 100%;
+            box-sizing: border-box;
         }
         .summary-title {
             font-size: 1.4em;
@@ -125,12 +127,19 @@
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid var(--primary-color);
+            width: 100%;
         }
         .week-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             gap: 10px;
             margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            width: 100%;
+            box-sizing: border-box;
         }
         .day-card {
             background: #f8f9fa;
@@ -138,6 +147,10 @@
             border-radius: 10px;
             text-align: center;
             transition: transform 0.2s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .day-card:hover {
             transform: translateY(-3px);
@@ -233,9 +246,9 @@
             </div>
             <div class='status-card'>
                 <div class='time'>תרופת ערב</div>
-                <div class='taken'>
-                    <span class='status-icon'>✔️</span>
-                    נלקחה
+                <div class='missed'>
+                    <span class='status-icon'>❌</span>
+                    לא נלקחה
                 </div>
             </div>
             <div class='status-card'>
@@ -260,7 +273,7 @@
                         </div>
                         <div class='status-item'>
                             <span>ערב:</span>
-                            <span class='status-icon'>✔️</span>
+                            <span class='status-icon'>❌</span>
                         </div>
                         
                     </div>
@@ -363,7 +376,7 @@
                 </div>
                 <div class='stat-card'>
                     <div class='stat-title'>תרופות ערב</div>
-                    <div class='stat-value'>7/7</div>
+                    <div class='stat-value'>6/7</div>
                 </div>
                 <div class='stat-card'>
                     <div class='stat-title'>תרופות שבועיות</div>
@@ -372,7 +385,7 @@
             </div>
         </div>
         <div class='current-time'>
-            עודכן לאחרונה: 21:45 10/05/2025
+            עודכן לאחרונה: 21:48 10/05/2025
         </div>
     </div>
     <script>
