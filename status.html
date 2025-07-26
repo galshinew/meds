@@ -111,34 +111,6 @@
         .status-icon {
             font-size: 1.5em;
         }
-        .action-button {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-size: 1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 15px;
-            width: 100%;
-        }
-        .action-button:hover {
-            background: #1976D2;
-            transform: translateY(-2px);
-        }
-        .action-button:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-        }
-        .action-button.taken {
-            background: var(--success-color);
-        }
-        .action-button.taken:hover {
-            background: #388E3C;
-        }
         .weekly-summary {
             background: white;
             padding: 25px;
@@ -248,22 +220,6 @@
         .current-time::before {
             content: '🔄';
         }
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--success-color);
-            color: white;
-            padding: 15px 20px;
-            border-radius: 8px;
-            box-shadow: var(--card-shadow);
-            z-index: 1000;
-            transform: translateX(400px);
-            transition: transform 0.3s ease;
-        }
-        .notification.show {
-            transform: translateX(0);
-        }
         @media (max-width: 768px) {
             .week-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -287,9 +243,6 @@
                     <span class='status-icon'>✔️</span>
                     נלקחה
                 </div>
-                <button class='action-button taken' onclick='updatePill("morning")' id='morning-btn'>
-                    בטל נטילת בוקר
-                </button>
             </div>
             <div class='status-card'>
                 <div class='time'>תרופת ערב</div>
@@ -297,20 +250,14 @@
                     <span class='status-icon'>✔️</span>
                     נלקחה
                 </div>
-                <button class='action-button taken' onclick='updatePill("evening")' id='evening-btn'>
-                    בטל נטילת ערב
-                </button>
             </div>
             <div class='status-card'>
                 <div class='time'>תרופה שבועית</div>
-                <div class='taken'>
-                    <span class='status-icon'>✔️</span>
-                    נלקחה
-                    <div class='weekly-date'>נלקחה לאחרונה: 20/07/2025</div>
+                <div class='missed'>
+                    <span class='status-icon'>❌</span>
+                    לא נלקחה
+                    
                 </div>
-                <button class='action-button taken' onclick='updatePill("weekly")' id='weekly-btn' disabled>
-                    רק ביום ראשון
-                </button>
             </div>
         </div>
         <div class='weekly-summary'>
@@ -418,7 +365,7 @@
                             <span>ערב:</span>
                             <span class='status-icon'>✔️</span>
                         </div>
-                        <div class='status-item'><span>שבועי:</span><span class='status-icon'>✔️</span></div>
+                        <div class='status-item'><span>שבועי:</span><span class='status-icon'>❌</span></div>
                     </div>
                 </div>
             </div>
@@ -433,48 +380,15 @@
                 </div>
                 <div class='stat-card'>
                     <div class='stat-title'>תרופות שבועיות</div>
-                    <div class='stat-value'>1/1</div>
+                    <div class='stat-value'>0/1</div>
                 </div>
             </div>
         </div>
         <div class='current-time'>
-            עודכן לאחרונה: 23:41 26/07/2025
+            עודכן לאחרונה: 23:52 26/07/2025
         </div>
     </div>
-    <div class='notification' id='notification'></div>
     <script>
-        function showNotification(message, type = 'success') {
-            const notification = document.getElementById('notification');
-            notification.textContent = message;
-            notification.style.background = type === 'success' ? '#4CAF50' : '#F44336';
-            notification.classList.add('show');
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
-        }
-        async function updatePill(type) {
-            try {
-                const response = await fetch('/api/update-pill', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ type: type })
-                });
-                if (response.ok) {
-                    showNotification('התרופה עודכנה בהצלחה!');
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 1000);
-                } else {
-                    showNotification('שגיאה בעדכון התרופה', 'error');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                showNotification('שגיאה בחיבור לשרת', 'error');
-            }
-        }
-        // Auto-refresh every minute
         setTimeout(function() {
             window.location.reload();
         }, 60000);
